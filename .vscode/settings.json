@@ -1,0 +1,9 @@
+{
+    "dotfileToggle.hideDotfiles": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/Thumbs.db": true
+    }
+}
