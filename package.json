@@ -3,17 +3,29 @@
   "publisher": "EnlightenedSolutionsLLC",
   "displayName": "Dotfile Toggle",
   "description": "Toggle visibility of dotfiles in the Explorer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": ">=1.74.0"
   },
-  "categories": ["Other"],
-  "keywords": ["dotfiles", "files", "explorer", "toggle", "visibility", "hidden"],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "dotfiles",
+    "files",
+    "explorer",
+    "toggle",
+    "visibility",
+    "hidden"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CatDogBark/dotfile-toggle"
   },
-  "activationEvents": ["onStartupFinished", "onCommand:dotfileToggle.toggle"],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:dotfileToggle.toggle"
+  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
