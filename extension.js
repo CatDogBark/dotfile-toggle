@@ -5,10 +5,10 @@ const vscode = require('vscode');
  */
 function activate(context) {
     console.log('Dotfile Toggle extension is now active!');
-    const config = vscode.workspace.getConfiguration();
+    const config = vscode.workspace.getConfiguration('dotfileToggle');
 
     // Show activation message
-    if (config.get('dotfileToggle.notify', false)) {
+    if (config.get('notify', false)) {
         vscode.window.showInformationMessage('✅ Dotfile Toggle Extension Loaded!');
     }
 
@@ -43,9 +43,9 @@ function activate(context) {
 }
 
 function initializeDotfileState() {
-    const config = vscode.workspace.getConfiguration();
-    const hideDotfiles = config.get('dotfileToggle.hideDotfiles', false);
-    
+    const config = vscode.workspace.getConfiguration('dotfileToggle');
+    const hideDotfiles = config.get('hideDotfiles', false);
+
     if (hideDotfiles) {
         // Apply the exclusion pattern if it should be hidden
         applyDotfileExclusion(true);
@@ -53,14 +53,14 @@ function initializeDotfileState() {
 }
 
 async function toggleDotfiles(statusBarItem) {
-    const config = vscode.workspace.getConfiguration();
-    const currentState = config.get('dotfileToggle.hideDotfiles', false);
+    const config = vscode.workspace.getConfiguration('dotfileToggle');
+    const currentState = config.get('hideDotfiles', false);
     const newState = !currentState;
     
     try {
         // Update our extension's configuration
-        await config.update('dotfileToggle.hideDotfiles', newState, vscode.ConfigurationTarget.Workspace);
-        
+        await config.update('hideDotfiles', newState, vscode.ConfigurationTarget.Workspace);
+
         // Apply or remove the exclusion pattern
         await applyDotfileExclusion(newState);
         
@@ -68,7 +68,7 @@ async function toggleDotfiles(statusBarItem) {
         updateStatusBar(statusBarItem);
         
         // Show notification
-        if (config.get('dotfileToggle.notify', false)) {
+        if (config.get('notify', false)) {
             const message = newState ? 'Dotfiles hidden' : 'Dotfiles visible';
             vscode.window.showInformationMessage(`📄 ${message}`);
         }
