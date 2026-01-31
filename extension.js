@@ -5,9 +5,12 @@ const vscode = require('vscode');
  */
 function activate(context) {
     console.log('Dotfile Toggle extension is now active!');
-    
+    const config = vscode.workspace.getConfiguration();
+
     // Show activation message
-    vscode.window.showInformationMessage('✅ Dotfile Toggle Extension Loaded!');
+    if (config.get('dotfileToggle.notify')) {
+        vscode.window.showInformationMessage('✅ Dotfile Toggle Extension Loaded!');
+    }
 
     // Create status bar item
     const statusBarItem = vscode.window.createStatusBarItem(
@@ -65,8 +68,10 @@ async function toggleDotfiles(statusBarItem) {
         updateStatusBar(statusBarItem);
         
         // Show notification
-        const message = newState ? 'Dotfiles hidden' : 'Dotfiles visible';
-        vscode.window.showInformationMessage(`📄 ${message}`);
+        if (config.get('dotfileToggle.notify')) {
+            const message = newState ? 'Dotfiles hidden' : 'Dotfiles visible';
+            vscode.window.showInformationMessage(`📄 ${message}`);
+        }
     } catch (error) {
         vscode.window.showErrorMessage(`Failed to toggle dotfiles: ${error.message}`);
     }
