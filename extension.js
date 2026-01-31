@@ -8,7 +8,7 @@ function activate(context) {
     const config = vscode.workspace.getConfiguration();
 
     // Show activation message
-    if (config.get('dotfileToggle.notify')) {
+    if (config.get('dotfileToggle.notify', false)) {
         vscode.window.showInformationMessage('✅ Dotfile Toggle Extension Loaded!');
     }
 
@@ -68,7 +68,7 @@ async function toggleDotfiles(statusBarItem) {
         updateStatusBar(statusBarItem);
         
         // Show notification
-        if (config.get('dotfileToggle.notify')) {
+        if (config.get('dotfileToggle.notify', false)) {
             const message = newState ? 'Dotfiles hidden' : 'Dotfiles visible';
             vscode.window.showInformationMessage(`📄 ${message}`);
         }
