@@ -57,6 +57,11 @@
           "type": "boolean",
           "default": false,
           "description": "Hide files starting with a dot"
+        },
+        "dotfileToggle.notify": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show notifications"
         }
       }
     }
