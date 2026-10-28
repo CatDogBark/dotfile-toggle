@@ -23,9 +23,17 @@ function activate(context) {
     updateStatusBar(statusBarItem);
     statusBarItem.show();
 
-    // Register the toggle command
+    // Register the commands: toggle (status bar, command palette) and the
+    // Explorer's hide/show buttons, one of which is shown at a time.
+    const isHidden = () => vscode.workspace.getConfiguration('dotfileToggle').get('hideDotfiles', false);
     const toggleCommand = vscode.commands.registerCommand('dotfileToggle.toggle', () => {
-        toggleDotfiles(statusBarItem);
+        setDotfilesHidden(statusBarItem, !isHidden());
+    });
+    const hideCommand = vscode.commands.registerCommand('dotfileToggle.hide', () => {
+        setDotfilesHidden(statusBarItem, true);
+    });
+    const showCommand = vscode.commands.registerCommand('dotfileToggle.show', () => {
+        setDotfilesHidden(statusBarItem, false);
     });
 
     // Listen for configuration changes
@@ -37,6 +45,8 @@ function activate(context) {
 
     // Add to subscriptions
     context.subscriptions.push(toggleCommand);
+    context.subscriptions.push(hideCommand);
+    context.subscriptions.push(showCommand);
     context.subscriptions.push(statusBarItem);
     context.subscriptions.push(configChangeListener);
 
@@ -54,9 +64,8 @@ async function initializeDotfileState() {
     }
 }
 
-async function toggleDotfiles(statusBarItem) {
+async function setDotfilesHidden(statusBarItem, newState) {
     const config = vscode.workspace.getConfiguration('dotfileToggle');
-    const newState = !config.get('hideDotfiles', false);
 
     // Save per folder when we can. With no folder open, or a folder whose
     // settings file can't be written, fall back to the user settings, which
@@ -150,6 +159,9 @@ function updateStatusBar(statusBarItem) {
     const hideDotfiles = config.get('hideDotfiles', false);
     const flag = config.inspect('hideDotfiles');
     const fromUserSettings = flag.workspaceValue === undefined && flag.globalValue !== undefined;
+
+    // Picks which Explorer button (eye or crossed-out eye) is shown.
+    vscode.commands.executeCommand('setContext', 'dotfileToggle.hidden', hideDotfiles);
 
     if (hideDotfiles) {
         statusBarItem.text = '$(eye-closed) Dotfiles';

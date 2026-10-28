@@ -23,7 +23,7 @@ Click the eye icon in the status bar:
 3. Press Enter
 
 ### Explorer Panel
-Click the eye icon in the Explorer panel title bar
+Click the eye icon in the Explorer panel title bar. Like the status bar, it shows an open eye while dotfiles are visible and a crossed-out eye while they're hidden.
 
 ## What Gets Hidden
 
@@ -65,6 +65,7 @@ This extension contributes the following settings:
 - No more "Extension Loaded!" popup at startup
 - Toggle notifications are off by default; turn them on with `dotfileToggle.notify` (thanks to [@unennhexium](https://github.com/unennhexium), #2)
 - Works in folders you can't write to, and with no folder open: the choice falls back to your user settings instead of failing
+- The Explorer button now matches the status bar: a crossed-out eye while dotfiles are hidden
 - Only the extension's own `**/.*` pattern is written; VS Code's defaults are no longer copied into each folder's settings, and old copies are cleaned up on the next toggle
 
 ### 0.0.1

@@ -34,19 +34,42 @@
         "command": "dotfileToggle.toggle",
         "title": "Toggle Dotfiles",
         "icon": "$(eye)"
+      },
+      {
+        "command": "dotfileToggle.hide",
+        "title": "Hide Dotfiles",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "dotfileToggle.show",
+        "title": "Show Dotfiles",
+        "icon": "$(eye-closed)"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "dotfileToggle.toggle",
-          "when": "view == workbench.explorer.fileView",
+          "command": "dotfileToggle.hide",
+          "when": "view == workbench.explorer.fileView && !dotfileToggle.hidden",
+          "group": "navigation"
+        },
+        {
+          "command": "dotfileToggle.show",
+          "when": "view == workbench.explorer.fileView && dotfileToggle.hidden",
           "group": "navigation"
         }
       ],
       "commandPalette": [
         {
           "command": "dotfileToggle.toggle"
+        },
+        {
+          "command": "dotfileToggle.hide",
+          "when": "false"
+        },
+        {
+          "command": "dotfileToggle.show",
+          "when": "false"
         }
       ]
     },
