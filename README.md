@@ -27,10 +27,7 @@ Click the eye icon in the Explorer panel title bar
 
 ## What Gets Hidden
 
-When hiding dotfiles, this extension will hide:
-- All files starting with `.` (using pattern `**/.*`)
-- Common dotfiles like `.env`, `.gitignore`, `.DS_Store`, `.vscode`
-- The `.git` folder remains hidden even when showing other dotfiles
+When hiding dotfiles, this extension adds one pattern, `**/.*`, to VS Code's `files.exclude`. That hides every file and folder starting with `.`, such as `.env`, `.gitignore` and `.vscode`. Showing them removes the pattern again; VS Code's own defaults (which keep `.git` hidden) are left alone.
 
 ## Installation
 
@@ -42,7 +39,9 @@ Install from the VS Code Marketplace:
 
 ## Configuration
 
-The extension automatically saves your preference per workspace. No additional configuration needed!
+The extension saves your choice per folder, in the folder's `.vscode/settings.json`. No additional configuration needed!
+
+If the folder's settings can't be written (for example a folder you don't own) or no folder is open, the choice is saved in your user settings instead, so it applies to every folder that hasn't been toggled on its own. Hover over the eye in the status bar to see which applies.
 
 ## Requirements
 
@@ -65,6 +64,8 @@ This extension contributes the following settings:
 
 - No more "Extension Loaded!" popup at startup
 - Toggle notifications are off by default; turn them on with `dotfileToggle.notify` (thanks to [@unennhexium](https://github.com/unennhexium), #2)
+- Works in folders you can't write to, and with no folder open: the choice falls back to your user settings instead of failing
+- Only the extension's own `**/.*` pattern is written; VS Code's defaults are no longer copied into each folder's settings, and old copies are cleaned up on the next toggle
 
 ### 0.0.1
 
