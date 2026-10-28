@@ -5,12 +5,6 @@ const vscode = require('vscode');
  */
 function activate(context) {
     console.log('Dotfile Toggle extension is now active!');
-    const config = vscode.workspace.getConfiguration('dotfileToggle');
-
-    // Show activation message
-    if (config.get('notify', false)) {
-        vscode.window.showInformationMessage('✅ Dotfile Toggle Extension Loaded!');
-    }
 
     // Create status bar item
     const statusBarItem = vscode.window.createStatusBarItem(

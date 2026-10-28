@@ -46,19 +46,25 @@ The extension automatically saves your preference per workspace. No additional c
 
 ## Requirements
 
-- VS Code 1.60.0 or higher
+- VS Code 1.74.0 or higher
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
 - `dotfileToggle.hideDotfiles`: Controls whether dotfiles should be hidden (managed automatically by the extension)
+- `dotfileToggle.notify`: Show a notification each time dotfiles are hidden or shown (default: off)
 
 ## Known Issues
 
 - When using VS Code with Remote SSH, you'll need to install the extension on both local and remote environments
 
 ## Release Notes
+
+### 0.0.4
+
+- No more "Extension Loaded!" popup at startup
+- Toggle notifications are off by default; turn them on with `dotfileToggle.notify` (thanks to [@unennhexium](https://github.com/unennhexium), #2)
 
 ### 0.0.1
 
@@ -74,7 +80,7 @@ Working with projects that have many configuration files (`.env`, `.eslintrc`, `
 
 ## Contributing
 
-Found a bug or have a feature request? Please open an issue on the [GitHub repository](https://github.com/yourusername/dotfile-toggle).
+Found a bug or have a feature request? Please open an issue on the [GitHub repository](https://github.com/CatDogBark/dotfile-toggle).
 
 ## License
 

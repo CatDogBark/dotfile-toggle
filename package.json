@@ -4,7 +4,7 @@
   "publisher": "EnlightenedSolutionsLLC",
   "displayName": "Dotfile Toggle",
   "description": "Toggle visibility of dotfiles in the Explorer",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "engines": {
     "vscode": ">=1.74.0"
   },
@@ -61,7 +61,7 @@
         "dotfileToggle.notify": {
           "type": "boolean",
           "default": false,
-          "description": "Show notifications"
+          "description": "Show a notification each time dotfiles are hidden or shown"
         }
       }
     }
