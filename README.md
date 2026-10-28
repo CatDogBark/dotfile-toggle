@@ -60,7 +60,7 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-### 0.0.4
+### 1.0.0
 
 - No more "Extension Loaded!" popup at startup
 - Toggle notifications are off by default; turn them on with `dotfileToggle.notify` (thanks to [@unennhexium](https://github.com/unennhexium), #2)
