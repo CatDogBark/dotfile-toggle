@@ -66,6 +66,7 @@ This extension contributes the following settings:
 - Toggle notifications are off by default; turn them on with `dotfileToggle.notify` (thanks to [@unennhexium](https://github.com/unennhexium), #2)
 - Works in folders you can't write to, and with no folder open: the choice falls back to your user settings instead of failing
 - The Explorer button now matches the status bar: a crossed-out eye while dotfiles are hidden
+- New icon: the same crossed-out eye
 - Only the extension's own `**/.*` pattern is written; VS Code's defaults are no longer copied into each folder's settings, and old copies are cleaned up on the next toggle
 
 ### 0.0.1

@@ -1,6 +1,10 @@
 {
   "name": "dotfile-toggle",
   "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1F1F1F",
+    "theme": "dark"
+  },
   "publisher": "EnlightenedSolutionsLLC",
   "displayName": "Dotfile Toggle",
   "description": "Toggle visibility of dotfiles in the Explorer",
