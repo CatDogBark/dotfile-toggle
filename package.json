@@ -8,7 +8,7 @@
   "publisher": "EnlightenedSolutionsLLC",
   "displayName": "Dotfile Toggle",
   "description": "Toggle visibility of dotfiles in the Explorer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
     "vscode": ">=1.74.0"
   },
@@ -89,6 +89,20 @@
           "type": "boolean",
           "default": false,
           "description": "Show a notification each time dotfiles are hidden or shown"
+        },
+        "dotfileToggle.saveTo": {
+          "type": "string",
+          "enum": [
+            "workspace",
+            "user"
+          ],
+          "enumDescriptions": [
+            "Save the choice per folder, in the folder's .vscode/settings.json",
+            "Save the choice in your user settings, so it applies to every folder and never changes the folder's settings file"
+          ],
+          "default": "workspace",
+          "scope": "application",
+          "markdownDescription": "Where toggling saves your choice. Use `user` when your team shares `.vscode/settings.json` in git and you don't want toggling to change it."
         }
       }
     }

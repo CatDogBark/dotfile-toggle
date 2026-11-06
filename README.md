@@ -43,6 +43,12 @@ The extension saves your choice per folder, in the folder's `.vscode/settings.js
 
 If the folder's settings can't be written (for example a folder you don't own) or no folder is open, the choice is saved in your user settings instead, so it applies to every folder that hasn't been toggled on its own. Hover over the eye in the status bar to see which applies.
 
+### Keeping `.vscode/settings.json` out of your commits
+
+If your team keeps `.vscode/settings.json` in git, set `dotfileToggle.saveTo` to `user` in your user settings. Toggling then always saves to your user settings and never changes the folder's settings file. This setting can only be set in user settings, so a shared settings file can't turn it on or off for you.
+
+If a folder's own settings already hide or show dotfiles, they override your user settings, and the extension tells you which entries to remove when you try to toggle there.
+
 ## Requirements
 
 - VS Code 1.74.0 or higher
@@ -53,12 +59,17 @@ This extension contributes the following settings:
 
 - `dotfileToggle.hideDotfiles`: Controls whether dotfiles should be hidden (managed automatically by the extension)
 - `dotfileToggle.notify`: Show a notification each time dotfiles are hidden or shown (default: off)
+- `dotfileToggle.saveTo`: Where toggling saves your choice: `workspace` (default, per folder) or `user` (your user settings, for every folder)
 
 ## Known Issues
 
 - When using VS Code with Remote SSH, you'll need to install the extension on both local and remote environments
 
 ## Release Notes
+
+### 1.1.0
+
+- New setting `dotfileToggle.saveTo`: set it to `user` to save toggles in your user settings, so the folder's `.vscode/settings.json` is never changed (thanks to [@azocolo-csw](https://github.com/azocolo-csw), #6)
 
 ### 1.0.0
 
